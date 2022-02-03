@@ -15,15 +15,15 @@ r0 = requests.get(url0)
 soup0 = BeautifulSoup(r0.text, 'lxml')
 
 
-for p in range(1, 3):
-    print(p)
-    url = f"https://kinobar.vip/detektiv/page/{p}"
-    r = requests.get(url)
+for p0 in range(1, 3):
+    print(p0)
+    url0 = f"https://kinobar.vip/detektiv/page/{p0}"
+    r0 = requests.get(url0)
     sleep(2)
-    soup = BeautifulSoup(r.text, "lxml")
-    films = soup.findAll('div', class_='main_news')
+    soup0 = BeautifulSoup(r0.text, "lxml")
+    films0 = soup0.findAll('div', class_='main_news')
 
-    for film0 in films:
+    for film0 in films0:
         # link = film.find('div', class_='mn_left_img').find('a', class_='link img').get('href')[:]
         # name = film.find('h2', class_='zagolovok').text.rstrip()
         try:
@@ -91,32 +91,32 @@ print('type(genre0)', type(genre0), genre0)
 #         print('No')
 # print('type(data)', type(data), data)
 ########################################################################################################################
-# for p in range(1, 3):
-#     print(p)
-#     url = f"https://kinobar.vip/detektiv/page/{p}"
-#     r = requests.get(url)
-#     sleep(2)
-#     soup = BeautifulSoup(r.text, "lxml")
-#     films = soup.findAll('div', class_='main_news')
-#     for film in films:
-#         link = film.find('div', class_='mn_left_img').find('a', class_='link img').get('href')[:]
-#         name = film.find('h2', class_='zagolovok').text.rstrip()
-#         try:
-#             genre = film.find('ul', class_='teaser_ads').text.split('\n')[2].split(':')[1].strip()
-#         except:
-#             genre = '-'
-#         director = film.find('div', class_='mn_text').find('li', id='teaser_rej').text.split(":")[1].strip()
-#         year = film.find('ul', class_='teaser_ads').text.split(':')[1].split()[0]
-#         appearance = film.find('ul', class_='mn_links').text.split('\n')[1]
+for p in range(1, 3):
+    print(p)
+    url = f"https://kinobar.vip/detektiv/page/{p}"
+    r = requests.get(url)
+    sleep(2)
+    soup = BeautifulSoup(r.text, "lxml")
+    films = soup.findAll('div', class_='main_news')
+    for film in films:
+        link = film.find('div', class_='mn_left_img').find('a', class_='link img').get('href')[:]
+        name = film.find('h2', class_='zagolovok').text.rstrip()
+        try:
+            genre = film.find('ul', class_='teaser_ads').text.split('\n')[2].split(':')[1].strip()
+        except:
+            genre = '-'
+        director = film.find('div', class_='mn_text').find('li', id='teaser_rej').text.split(":")[1].strip()
+        year = film.find('ul', class_='teaser_ads').text.split(':')[1].split()[0]
+        appearance = film.find('ul', class_='mn_links').text.split('\n')[1]
 
-        # data.append([link, name, genre, director, year, appearance])
+        data.append([link, name, genre, director, year, appearance])
 
-        # if genre == 'Боевики':
-        #     data_boevik.append([link, name, genre, director, year, appearance])
-        #     # print("OK")
-        #     # print('type(genre)', type(genre))
-        # if genre == 'Драмы':
-        #     data_drama.append([link, name, genre, director, year, appearance])
+        if genre == 'Боевики':
+            data_boevik.append([link, name, genre, director, year, appearance])
+            # print("OK")
+            # print('type(genre)', type(genre))
+        if genre == 'Драмы':
+            data_drama.append([link, name, genre, director, year, appearance])
 
 
     # header = ['link', 'name', 'genre', 'director', 'year', 'appearance']
