@@ -5,7 +5,6 @@ import pandas as pd
 import re
 z = set()
 w = str()
-p = ''
 data = []
 data_boevik =[]
 data_drama =[]
@@ -42,9 +41,7 @@ for p in range(1, 2):
         df = pd.DataFrame(data, columns=header)
         df.to_csv('kino_parsing.csv', sep=';', encoding='utf-8')
 
-        p = ''.join(genre).strip()
-        print('type(p)', type(p), p)
-        w = w + ', ' + p
+        w = w + ', ' + genre
     print('type(genres)', type(w), w)
     string = w
     string = string.split(",")
@@ -56,30 +53,8 @@ for p in range(1, 2):
     hi.pop()
     hi = list(hi)
     print('hi', len(hi), type(hi), hi)
-    # zz =
-    # z = set(list(genres))
-    # print('type(z)', type(z), z)
 
     print('type(genre)', type(genre), genre)
     # The code below is only for demonstrating the process through the terminal.
-genres = []
-for d in data:
-    genres.append(d[2])
-    # genres = list('\''.join(str(genres)))
-    # list(str(genres.append(d[2])).split('\''))
-print('type(genres)', type(genres), genres)
-s = str(genres).strip('\'')
-# s = ','.join(genres).replace(',', ', ').lstrip().rstrip()
-
-print('type(s)', type(s), s)
-l = s.split(',')
-print('type(l)', type(l), l)
-y = set(l)
-print('type(y)', type(y), y)
-# z = list(set(list(s)))
-# print('type(z)', type(z), z)
-g = list(set(genres))
-
-print('type(g)', type(g), g)
 
 print(data)
