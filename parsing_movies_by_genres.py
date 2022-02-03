@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import re
 z = set()
-w = str()
+ag = str()
 data = []
 data_boevik =[]
 data_drama =[]
@@ -21,7 +21,6 @@ for p in range(1, 2):
         name = film.find('h2', class_='zagolovok').text.rstrip()
         try:
             genre = film.find('ul', class_='teaser_ads').text.split('\n')[2].split(':')[1].strip()
-            # genre = film.find('ul', class_='teaser_ads').text.split('\n')[2].split(',')[1].strip()
         except:
             genre = '-'
         director = film.find('div', class_='mn_text').find('li', id='teaser_rej').text.split(":")[1].strip()
@@ -41,18 +40,20 @@ for p in range(1, 2):
         df = pd.DataFrame(data, columns=header)
         df.to_csv('kino_parsing.csv', sep=';', encoding='utf-8')
 
-        w = w + ', ' + genre
-    print('type(genres)', type(w), w)
-    string = w
-    string = string.split(",")
-    print('string 1 ', type(string), string)
-    for i in range(len(string)):
-        string[i] = string[i].strip()
-    print(string)
-    hi = set(string)
-    hi.pop()
-    hi = list(hi)
-    print('hi', len(hi), type(hi), hi)
+        ag += ', ' + genre          # ag => variable (all genres)
+
+    print('type(ag)', type(ag), ag)
+    string = ag
+    agl = ag.split(',')             # agl => variable (all genres list)
+    print('agl', type(agl), agl)
+
+    for i in range(len(agl)):
+        agl[i] = agl[i].strip()
+    print(agl)
+    ag_set = set(agl)               # ag_set => variable (all genres set)
+    ag_set.pop()                    # crutch to remove first empty item in variable genre
+    agl_cl = list(ag_set)           # agl_cl => variable (all genres list cleaned)
+    print('agl_cl', len(agl_cl), type(agl_cl), agl_cl)
 
     print('type(genre)', type(genre), genre)
     # The code below is only for demonstrating the process through the terminal.
